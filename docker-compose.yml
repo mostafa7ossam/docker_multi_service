@@ -1,0 +1,37 @@
+version: '3'
+services:
+  airports:
+    build: './airports'
+    image: airports_image:1.0.1
+    container_name: airports
+    ports:
+      - "8081:8080"
+    networks:
+      - airports_network
+
+  countries:
+    container_name: countries
+    build: './countries'
+    image: countries_image:1.0.1
+    ports:
+      - "8082:8080"
+    networks:
+      - countries_network
+  nginx:
+    container_name: nginx_reverse_proxy
+    image: nginx:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - airports
+      - countries
+    network_mode: host
+
+networks:
+  airports_network:
+    driver: bridge
+
+  countries_network:
+    driver: bridge
