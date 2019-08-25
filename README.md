@@ -1,6 +1,9 @@
 # docker_multi_service
 notes:
-this implementation is tested on the following  ubuntu version 18.04.3  docker 18.09.7  docker-compose version 1.25.0-rc
+this implementation is tested on the following\
+ubuntu version 18.04.3\
+docker 18.09.7\
+docker-compose version 1.25.0-rc
 
 ## getting started guide
 
